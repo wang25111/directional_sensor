@@ -10,10 +10,10 @@ import java.io.IOException;
 public class TestB {
     static String type = "B";
     //迭代次数
-    static int t = 100;
+    static int t = 60;
     public static void main(String[] args) throws IOException {
         //参数变化值列表
-        int[] SList = {1500, 3000, 4500, 6000, 7500, 9000, 10500};
+        int[] SList = {1000, 2000, 3000, 4000, 5000, 6000, 7000};
         //存放所有结果
         double[][][] res = new double[t][6][SList.length];
         long[][][] runTime = new long[t][6][SList.length];
@@ -21,7 +21,7 @@ public class TestB {
             //初始化网络
             for(int j = 0; j < SList.length; j++){
                 Charger.B = SList[j];
-                Algorithm.init(300, 800, 6);
+                Algorithm.init(50, 250, 5);
                 long start = 0;
                 long end = 0;
                 System.out.println(type + " = " + SList[j] + "-----------------------");

@@ -8,10 +8,11 @@ public class PoI extends Entity{
     static Random random = new Random();
     //权重上限
     static  int wkUp = 3;
-    static double Uk_up = 14;
+    static double Uk_up = 50;
+    static double Uk_Min = 30;
     //剩余的效用，取值范围
-    public double Ur = 1 + random.nextDouble() * Uk_up;
-    //兴趣点的权重，取值范围[1,5]
+    public double Ur = Uk_Min + (Uk_up - Uk_Min) * random.nextDouble();
+    //兴趣点的权重，取值范围[1,3]
     public double wk = random.nextInt(wkUp) + 1;
 
     public PoI(double x, double y){

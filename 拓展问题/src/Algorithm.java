@@ -10,9 +10,9 @@ public class Algorithm {
     static List<PoI> poIList;
     static List<Garage> garageList;
     //每个车库的充电器数量：[1, chargerNumber]
-    static int chargerNumber = 5;
+    static int chargerNumber = 3;
     //每个车库的充电器数量：[chargerNumber, routeNumber]
-    static int routeNumber = 12;
+    static int routeNumber = 6;
     //网络中的所有路径
     static List<Route> C;
     //记录兴趣点的初始Er、传感器的初始Er

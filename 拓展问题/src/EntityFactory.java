@@ -7,7 +7,7 @@ import java.util.Random;
  */
 public class EntityFactory {
     //网络的大小（影响坐标）
-    static int size = 300;
+    static int size = 150;
     static Random rand = new Random();
 
     //随机生成m个传感器
