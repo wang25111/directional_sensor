@@ -10,7 +10,7 @@ import java.io.IOException;
 public class TestLj {
     static String type = "Lj";
     //迭代次数
-    static int t = 180;
+    static int t = 100;
     public static void main(String[] args) throws IOException {
         //参数变化值列表
         int[] SList = {30, 65, 100, 135, 170, 205};

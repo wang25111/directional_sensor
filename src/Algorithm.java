@@ -7,7 +7,7 @@ public class Algorithm {
     static List<Sensor> sensorList;
     static  List<PoI> poIList;
     //默认时间片的数量
-    static int B = 250;
+    static int B = 120;
 
     //记录兴趣点的初始Er、传感器的初始Er
     static double[] UrArray;
@@ -118,8 +118,12 @@ public class Algorithm {
         }
 
         Util.init(ErArray, sensorList, UrArray, poIList);
-        //调用CSA感知算法
-        double res = Util.totalUtility(H, chargerList, sensorList, poIList);
+        //调用CSA感知算法，并最终输出每个poi获取的效用、每个sensor获取的效用
+        double res = Util.totalUtility(H, chargerList, sensorList, poIList, "SSA+CSA");
+        for(int i = 0; i < UrArray.length; i++){
+            System.out.print(UrArray[i] - poIList.get(i).Ur + ",");
+        }
+        System.out.println();
         return res;
     }
 
@@ -226,6 +230,10 @@ public class Algorithm {
 
         Util.init(ErArray, sensorList, UrArray, poIList);
         double res = Util.totalUtility(H, chargerList, sensorList, poIList);
+        for(int i = 0; i < UrArray.length; i++){
+            System.out.print(UrArray[i] - poIList.get(i).Ur + ",");
+        }
+        System.out.println();
         return res;
     }
 
@@ -256,7 +264,11 @@ public class Algorithm {
         }
 
         Util.init(ErArray, sensorList, UrArray, poIList);
-        double res = BaseAlgorithm.FOPAUtility(H, chargerList, sensorList);
+        double res = BaseAlgorithm.FOPAUtility(H, chargerList, sensorList, "FOPA+AA");
+        for(int i = 0; i < UrArray.length; i++){
+            System.out.print(UrArray[i] - poIList.get(i).Ur + ",");
+        }
+        System.out.println();
         return res;
     }
 
@@ -313,16 +325,22 @@ public class Algorithm {
         }
 
         int remain = B;
-        for(int i = 0; i < H.length - 1; i++){
-            H[i] = B * PoINumList[i] / den;
-            remain -= H[i];
+        if(den != 0){
+            for(int i = 0; i < H.length - 1; i++){
+                H[i] = B * PoINumList[i] / den;
+                remain -= H[i];
+            }
         }
         //保证时间片全部用掉
         H[H.length - 1] = remain;
 
         Util.init(ErArray, sensorList, UrArray, poIList);
         //调用感知算法
-        U += BaseAlgorithm.MCUtility(H, chargerList, sensorList);
+        U += BaseAlgorithm.MCUtility(H, chargerList, sensorList, "MC+PC");
+        for(int i = 0; i < UrArray.length; i++){
+            System.out.print(UrArray[i] - poIList.get(i).Ur + ",");
+        }
+        System.out.println();
         return U;
     }
 
@@ -345,17 +363,22 @@ public class Algorithm {
             PoINumList[i] = PoINum;
         }
 
-        int remain = B;
-        for(int i = 0; i < H.length - 1; i++){
-            H[i] = B * PoINumList[i] / den;
-            remain -= H[i];
-        }
-        //保证时间片全部用掉
-        H[H.length - 1] = remain;
 
+        int remain = B;
+        if(den != 0){
+            for(int i = 0; i < H.length - 1; i++){
+                H[i] = B * PoINumList[i] / den;
+                remain -= H[i];
+            }
+        }
+        H[H.length - 1] = remain;
         Util.init(ErArray, sensorList, UrArray, poIList);
         //调用感知算法
-        U += BaseAlgorithm.FOPAUtility(H, chargerList, sensorList);
+        U += BaseAlgorithm.FOPAUtility(H, chargerList, sensorList, "FOPA+PC");
+        for(int i = 0; i < UrArray.length; i++){
+            System.out.print(UrArray[i] - poIList.get(i).Ur + ",");
+        }
+        System.out.println();
         return U;
     }
 
@@ -386,10 +409,13 @@ public class Algorithm {
         }
 
         Util.init(ErArray, sensorList, UrArray, poIList);
-        double res = BaseAlgorithm.MCUtility(H, chargerList, sensorList);
+        double res = BaseAlgorithm.MCUtility(H, chargerList, sensorList, "MC+AA");
+        for(int i = 0; i < UrArray.length; i++){
+            System.out.print(UrArray[i] - poIList.get(i).Ur + ",");
+        }
+        System.out.println();
         return res;
     }
-
 
     static double maxU = 0;
     public static double OPT_OPT(){

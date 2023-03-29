@@ -9,7 +9,7 @@ import java.util.Random;
  */
 public class EntityFactory {
     //网络的大小（影响坐标）
-    static int size = 250;
+    static int size = 150;
     static Random rand = new Random();
 
     //随机生产n个充电器
@@ -62,7 +62,9 @@ public class EntityFactory {
     static List<PoI> generatePoI(int l){
         List<PoI> list = new ArrayList<>();
         for(int i = 0; i < l; i++){
-            PoI s = new PoI(rand.nextDouble() * size, rand.nextDouble() * size);
+            double x = rand.nextDouble() * (size - Charger.D) + Charger.D / 2;
+            double y = rand.nextDouble() * (size - Charger.D) + Charger.D / 2;
+            PoI s = new PoI(x, y);
             list.add(s);
         }
         return list;

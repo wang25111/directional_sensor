@@ -89,9 +89,28 @@ public class BaseAlgorithm {
         double sum = 0;
         for(Sensor s : sensorList){
             s.calEnergy(chargerList);
-            sum += FOPASchedule(s);
+            double tmp = FOPASchedule(s);
+            sum += tmp;
         }
 
+        return sum;
+    }
+
+    static double FOPAUtility(int[] H, List<Charger> chargerList, List<Sensor> sensorList, String algName){
+        System.out.println(algName + ":");
+        for(int i = 0; i < H.length; i++){
+            chargerList.get(i).h = H[i];
+        }
+
+        double sum = 0;
+        for(Sensor s : sensorList){
+            s.calEnergy(chargerList);
+            double tmp = FOPASchedule(s);
+            sum += tmp;
+            System.out.print(tmp+",");
+        }
+
+        System.out.println();
         return sum;
     }
     //FOPA算法（对单个传感器）
@@ -136,7 +155,7 @@ public class BaseAlgorithm {
                 U += tmpUtility;
                 p.Ur -= tmpUtility;
                 //防止可能出现的死循环
-                if(p.Ur <= 0.1) zero.add(p);
+                if(p.Ur <= 1) zero.add(p);
             }
             for(PoI p : zero){
                 s.poISet.remove(p);
@@ -156,6 +175,25 @@ public class BaseAlgorithm {
             s.calEnergy(chargerList);
             sum += MCSchedule(s);
         }
+
+        return sum;
+    }
+
+    static double MCUtility(int[] H, List<Charger> chargerList, List<Sensor> sensorList, String algName){
+        System.out.println(algName + ":");
+        for(int i = 0; i < H.length; i++){
+            chargerList.get(i).h = H[i];
+        }
+
+        double sum = 0;
+        for(Sensor s : sensorList){
+            s.calEnergy(chargerList);
+            double tmp = MCSchedule(s);
+            sum += tmp;
+            System.out.print(tmp + ",");
+        }
+        System.out.println();
+
 
         return sum;
     }

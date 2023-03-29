@@ -5,7 +5,7 @@ public class Sensor extends Entity implements Util {
     //传感器的容量
     public static double Ecap = 50;
     //感知参数
-    public static double a = 16;
+    public static double a = 90;
     public static double b = 8;
     //感知距离
     public static double R = 5;

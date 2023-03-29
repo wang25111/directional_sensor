@@ -10,7 +10,7 @@ import java.io.IOException;
 public class TestL {
     static String type = "L";
     //迭代次数
-    static int t = 120;
+    static int t = 100;
     public static void main(String[] args) throws IOException {
         FileWriter fw = new FileWriter("C:\\Users\\HP\\Desktop\\data\\" + type +".txt");
         BufferedWriter bf = new BufferedWriter(fw);
@@ -18,14 +18,14 @@ public class TestL {
         BufferedWriter bf1 = new BufferedWriter(fw1);
 
         //参数变化值列表
-        int addNum = 100;
-        int[] LList = {200, 300, 400, 500, 600, 700};
+        int addNum = 20;
+        int[] LList = {80, 100, 120, 140, 160, 180};
         //存放所有结果
         double[][][] res = new double[t][6][LList.length];
         long[][][] runTime = new long[t][6][LList.length];
         for(int i = 0; i < t; i++){
             //初始化网络
-            Algorithm.init(120, 50, 100);
+            Algorithm.init(50, 25, 60);
             for(int j = 0; j < LList.length; j++){
                 long start = 0;
                 long end = 0;

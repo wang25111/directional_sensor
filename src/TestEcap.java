@@ -10,7 +10,7 @@ import java.io.IOException;
 public class TestEcap {
     static String type = "Ecap";
     //迭代次数
-    static int t = 120;
+    static int t = 100;
     public static void main(String[] args) throws IOException {
         FileWriter fw = new FileWriter("C:\\Users\\HP\\Desktop\\data\\" + type +".txt");
         BufferedWriter bf = new BufferedWriter(fw);
@@ -26,7 +26,7 @@ public class TestEcap {
             //初始化网络
             for(int j = 0; j < EList.length; j++){
                 Sensor.Ecap = EList[j];
-                Algorithm.init(120, 50, 400);
+                Algorithm.init(50, 25, 140);
 
                 long start = 0;
                 long end = 0;

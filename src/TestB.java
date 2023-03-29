@@ -20,13 +20,13 @@ public class TestB {
         BufferedWriter bf1 = new BufferedWriter(fw1);
 
         //参数变化值列表
-        int[] BList = {50, 150, 250, 350, 450, 550, 650};
+        int[] BList = {40, 80, 120, 160, 200, 240};
         //存放所有结果
         double[][][] res = new double[t][6][BList.length];
         long[][][] runTime = new long[t][6][BList.length];
         for(int i = 0; i < t; i++){
             //初始化网络
-            Algorithm.init(120, 50, 400);
+            Algorithm.init(50, 25, 140);
             for(int j = 0; j < BList.length; j++){
                 long start = 0;
                 long end = 0;

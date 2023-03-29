@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class Test {
     public static void main(String[] args) {
-        Algorithm.init(120, 50, 400);
+        Algorithm.init(25, 50, 140);
         //System.out.println(Algorithm.SSA_CSA_V2());
         System.out.println(Algorithm.SSA_CSA());
         System.out.println("==================");
@@ -28,15 +28,22 @@ public class Test {
 
     @org.junit.Test
     public void test(){
-        Sensor s = new Sensor(0, 0);
-        PoI p1 = new PoI(0, 2);
-        p1.wk = 1;
-        PoI p2 = new PoI(0.5, 2);
-        p2.wk = 1;
+        Sensor.R = 0.5;
+        Sensor.a = 0.042;
+        Sensor.b = 0.06;
+        PoI.wkUp = 2;
 
-        System.out.println(Util.Quality(s, p1, 0));
-        System.out.println(Util.Quality(s, p2, 0));
-        System.out.println(Math.acos(2 / Math.sqrt(4.25))  * 360 / 2 / Math.PI);
+        Charger.tao = 3;
+        Charger.D = 1.6;
+        Charger.alpha = 0.09;
+        Charger.beta = 0.01;
+
+        Sensor s = new Sensor(0, 0);
+        PoI p = new PoI(0, 0.3);
+        Charger c = new Charger(0, 0.2);
+
+        System.out.println(Util.Quality(s, p, 0));
+        System.out.println(s.power(c));
     }
 
     @org.junit.Test

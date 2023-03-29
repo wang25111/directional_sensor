@@ -10,7 +10,7 @@ import java.io.IOException;
 public class TestD {
     static String type = "D";
     //迭代次数
-    static int t = 120;
+    static int t = 100;
     public static void main(String[] args) throws IOException {
         FileWriter fw = new FileWriter("C:\\Users\\HP\\Desktop\\data\\" + type +".txt");
         BufferedWriter bf = new BufferedWriter(fw);
@@ -25,7 +25,7 @@ public class TestD {
         long[][][] runTime = new long[t][6][DList.length];
         for(int i = 0; i < t; i++){
             //初始化网络
-            Algorithm.init(120, 50, 400);
+            Algorithm.init(50, 25, 140);
             for(int j = 0; j < DList.length; j++){
                 Charger.D = DList[j];
                 Charger.alpha = AlpahList[j];

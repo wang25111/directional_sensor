@@ -10,7 +10,7 @@ import java.io.IOException;
 public class TestU {
     static String type = "U";
     //迭代次数
-    static int t = 80;
+    static int t = 100;
     public static void main(String[] args) throws IOException {
         FileWriter fw = new FileWriter("C:\\Users\\HP\\Desktop\\data\\" + type +".txt");
         BufferedWriter bf = new BufferedWriter(fw);
@@ -18,15 +18,17 @@ public class TestU {
         BufferedWriter bf1 = new BufferedWriter(fw1);
 
         //参数变化值列表
-        double[] UList = {5, 15, 25, 35, 45, 55};
+        double[] UList = {30, 50, 70, 90, 110, 130};
+        double[] UMin =  {10, 30, 50, 70,  90, 110};
         //存放所有结果
         double[][][] res = new double[t][6][UList.length];
         long[][][] runTime = new long[t][6][UList.length];
         for(int i = 0; i < t; i++){
             //初始化网络
             for(int j = 0; j < UList.length; j++){
-                PoI.UrUp = UList[j] - 1;
-                Algorithm.init(120, 50, 400);
+                PoI.UrUp = UList[j];
+                PoI.UrMin = UMin[j];
+                Algorithm.init(50, 25, 140);
 
                 long start = 0;
                 long end = 0;

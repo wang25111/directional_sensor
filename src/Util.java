@@ -181,6 +181,27 @@ public interface Util {
         return sum;
     }
 
+    static double totalUtility(int[] H, List<Charger> chargerList, List<Sensor> sensorList, List<PoI> poIList, String algName) {
+        System.out.println(algName + ":");
+        //先开启充电器
+        for (int i = 0; i < H.length; i++) {
+            chargerList.get(i).h = H[i];
+        }
+
+        double sum = 0;
+        //再计算传感器充电后的能量
+        for (Sensor s : sensorList) {
+            s.calEnergy(chargerList);
+//            System.out.println(s.Er);
+            double tmp = senseSchedule(s);
+            System.out.print(tmp+",");
+            sum += tmp;
+        }
+
+        System.out.println();
+        return sum;
+    }
+
     //（单个充电器）确定传感器的感知方案
     static double senseSchedule(Sensor s) {
         double U = 0;
@@ -473,6 +494,8 @@ public interface Util {
             System.out.println(s.Ur);
         }
     }
+
+
 }
 
 

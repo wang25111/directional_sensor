@@ -10,7 +10,7 @@ import java.io.IOException;
 public class TestOmiga {
     static String type = "O";
     //迭代次数
-    static int t = 100;
+    static int t = 80;
     public static void main(String[] args) throws IOException {
         FileWriter fw = new FileWriter("C:\\Users\\HP\\Desktop\\data\\" + type +".txt");
         BufferedWriter bf = new BufferedWriter(fw);
@@ -22,10 +22,10 @@ public class TestOmiga {
         //存放所有结果
         double[][][] res = new double[t][6][OList.length];
         long[][][] runTime = new long[t][6][OList.length];
-        Sensor.R = 8;
+//        Sensor.R = 6;
         for(int i = 0; i < t; i++){
             //初始化网络
-            Algorithm.init(120, 50, 1000);
+            Algorithm.init(50, 25, 280);
             for(int j = 0; j < OList.length; j++){
                 Sensor.A = Math.PI * OList[j];
 

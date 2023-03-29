@@ -10,7 +10,7 @@ import java.io.IOException;
 public class Teste {
     static String type = "e";
     //迭代次数
-    static int t = 120;
+    static int t = 100;
     public static void main(String[] args) throws IOException {
         FileWriter fw = new FileWriter("C:\\Users\\HP\\Desktop\\data\\" + type +".txt");
         BufferedWriter bf = new BufferedWriter(fw);
@@ -24,9 +24,9 @@ public class Teste {
         long[][][] runTime = new long[t][6][eList.length];
         for(int i = 0; i < t; i++){
             //初始化网络
-            Algorithm.init(120, 50, 400);
+            Algorithm.init(25, 50, 140);
             for(int j = 0; j < eList.length; j++){
-                Sensor.e = Math.PI * eList[j];
+                Sensor.e = eList[j];
 
                 long start = 0;
                 long end = 0;

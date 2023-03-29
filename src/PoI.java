@@ -9,11 +9,12 @@ public class PoI extends Entity{
     //权重上限
     static  int wkUp = 3;
     //剩余效用上限
-    static double UrUp = 14;
+    static double UrUp = 50;
+    static double UrMin = 30;
 
     //剩余的效用，取值范围
-    public double Ur = 1 + random.nextDouble() * UrUp;
-    //兴趣点的权重，取值范围[1,5]
+    public double Ur = UrMin + random.nextDouble() * (UrUp - UrMin);
+    //兴趣点的权重，取值范围[1,3]
     public double wk = random.nextInt(wkUp) + 1;
 
     public PoI(double x, double y){
